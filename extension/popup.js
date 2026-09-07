@@ -1,3 +1,5 @@
+const BACKEND_URL = "https://online-inspectors-backend.onrender.com/inspect";
+
 document.getElementById('scanBtn').addEventListener('click', async () => {
   const resultDiv = document.getElementById('result');
   resultDiv.innerText = "Scanning...";
@@ -16,7 +18,7 @@ document.getElementById('scanBtn').addEventListener('click', async () => {
     }
 
     const domain = url.hostname;
-    const response = await fetch(`http://127.0.0.1:5000/inspect?domain=${domain}`);
+    const response = await fetch(`${BACKEND_URL}?domain=${domain}`);
     const data = await response.json();
 
     if (response.ok) {
