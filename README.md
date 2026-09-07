@@ -38,8 +38,6 @@ online-inspectors/
 
 ```
 
----
-
 ## 🚀 API Reference
 
 ### `GET /inspect`
