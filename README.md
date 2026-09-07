@@ -35,3 +35,89 @@ online-inspectors/
 │   └── index.html            # Modern HTML/JS/CSS frontend
 ├── index.html                # Root mirror for GitHub Pages serving
 └── README.md                 # Project documentation
+
+```
+
+---
+
+## 🚀 API Reference
+
+### `GET /inspect`
+
+Retrieves domain metadata including RDAP registration timestamps and DNS query responses.
+
+**Query Parameters:**
+
+* `domain` *(required)*: The domain hostname to analyze (e.g., `google.com`).
+
+**Sample Request:**
+
+```bash
+curl "[https://online-inspectors-backend.onrender.com/inspect?domain=google.com](https://online-inspectors-backend.onrender.com/inspect?domain=google.com)"
+
+```
+
+**Sample Response:**
+
+```json
+{
+  "dns": {
+    "answers": [
+      {
+        "TTL": 300,
+        "data": "142.250.4.102",
+        "name": "google.com.",
+        "type": 1
+      }
+    ],
+    "status": "success"
+  },
+  "domain": "google.com",
+  "rdap": {
+    "creation_date": "1997-09-15T04:00:00Z",
+    "handle": "2138514_DOMAIN_COM-VRSN",
+    "status": "success"
+  }
+}
+
+```
+
+---
+
+## 🛠️ Local Development Setup
+
+### 1. Backend Setup
+
+```bash
+cd backend
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+gunicorn app:app
+
+```
+
+Backend runs locally on `http://127.0.0.1:8000`.
+
+### 2. Chrome Extension Installation
+
+1. Open Chrome and navigate to `chrome://extensions`.
+2. Enable **Developer Mode** (top right toggle).
+3. Click **Load unpacked** and select the `extension/` folder from this repository.
+
+---
+
+## 📄 License
+
+Distributed under the MIT License.
+
+```
+
+Terminal execution commands to commit and push:
+
+```bash
+git add README.md
+git commit -m "Docs: Add full production README"
+git push origin main
+
+```
